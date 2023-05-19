@@ -16,7 +16,22 @@
     "cross-env": "^7.0.3",
     "isbot": "^3.6.8",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "@clerk/remix": "^2.5.6",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-regular-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@remix-run/serve": "^1.16.0",
+    "@remix-run/v1-meta": "^0.1.1",
+    "@remix-run/v1-route-convention": "^0.1.1",
+    "chart.js": "^4.3.0",
+    "dompurify": "^3.0.2",
+    "flowbite": "^1.6.5",
+    "flowbite-react": "^0.4.4",
+    "objectmodel": "^2.6.4",
+    "passport": "^0.6.0",
+    "react-chartjs-2": "^5.2.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.16.1",

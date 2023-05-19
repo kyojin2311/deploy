@@ -6,6 +6,7 @@ module.exports = {
       ? "./server.ts"
       : undefined,
   serverBuildPath: ".netlify/functions-internal/server.js",
+tailwind: true,
   // appDirectory: "app",
   // assetsBuildDirectory: "public/build",
   // publicPath: "/build/",
