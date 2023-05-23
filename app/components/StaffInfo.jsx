@@ -3,16 +3,13 @@ import link from "../images/ava.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { formatDate } from "../util/formatDate";
-export default function OwnInfo() {
-  const matches = useMatches();
-  const info = matches.find((match) => match.id === "routes/_home");
-  const { name, SSN, dateOfBirth, phone } = info.data.data;
+export default function StaffInfo() {
+  const info = useLoaderData();
+  const { name, SSN, dateOfBirth, phone } = info.data;
   const formattedDate = formatDate(dateOfBirth);
-  const inspection = info.data.registed.sort(function (a, b) {
-    return new Date(b.regisDate) - new Date(a.regisDate);
-  });
+  const inspection = info.registed;
   return (
-    <div className=" m-auto p-4">
+    <div className=" m-auto">
       <section className="mx-0 dark:text-white">
         <div className="max-w-7xl lg:pt-5 items-stretch">
           <div className="mx-5 max-w-xl">
@@ -35,7 +32,8 @@ export default function OwnInfo() {
                   <div className="pt-1.5">
                     <h1 className="text-xl font-semibold">{name}</h1>
                     <p className="text-lg font-light text-black-500">
-                      Nhân viên tại: {info.data.workFor.name}
+                      {/* Nhân viên tại: {info.data.workFor.name} */}
+                      Nhân viên tại: Đâu đó
                     </p>
                   </div>
                 </div>
@@ -54,7 +52,7 @@ export default function OwnInfo() {
                     <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
                       Email address
                     </dt>
-                    <dd className="text-lg font-semibold">{info.data.email}</dd>
+                    <dd className="text-lg font-semibold">{info.email}</dd>
                   </div>
 
                   <div className="flex flex-col py-3">
@@ -86,16 +84,16 @@ export default function OwnInfo() {
           Inspections
         </h3>
 
-        <ol className="relative border-l border-gray-200 dark:border-gray-700">
+        {/* <ol className="relative border-l border-gray-200 dark:border-gray-700">
           {inspection.map((inspec) => (
-            <li key={inspec._id} className="mb-10 ml-4">
-              <Link to={`/Inspections/${inspec.regisNum}`}>
+            <li key= {inspec._id} className="mb-10 ml-4">
+              <Link to={`/Inspections/${inspec._id}`}>
                 <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
                 <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                   {formatDate(inspec.regisDate)}
                 </time>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                  Mã số Đăng kiểm: {inspec.regisNum}
+                  Mã số Đăng kiểm: {inspec._id}
                 </h3>
                 <p className="text-base font-normal text-gray-500 dark:text-gray-400">
                   Biển số xe: {inspec.car.numberPlate}
@@ -106,7 +104,7 @@ export default function OwnInfo() {
               </Link>
             </li>
           ))}
-        </ol>
+        </ol> */}
       </section>
     </div>
   );

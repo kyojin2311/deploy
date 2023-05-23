@@ -9,8 +9,10 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useNavigate,
 } from "@remix-run/react";
 
+import { useRouteError, isRouteErrorResponse } from "@remix-run/react";
 // export const links = () => [
 //   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),{rel: "stylesheet", href: shareStyle}, {rel:'stylesheet', href:'https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'}
 // ];
@@ -43,7 +45,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="dark">
         <Outlet />
         <ScrollRestoration />
         <Scripts />
@@ -52,4 +54,31 @@ export default function App() {
       </body>
     </html>
   );
+}
+export function ErrorBoundary() {
+  const error = useRouteError();
+  const backHandler = () => {
+    const navigate = useNavigate();
+    return navigate('..');
+  }
+  if (isRouteErrorResponse(error)) {
+    return (
+      <div>
+        <h1>
+          {error.status} {error.statusText}
+        </h1>
+        <p>{error.data}</p>
+      </div>
+    );
+  } else if (error instanceof Error) {
+    return (
+      <div className="dark m-auto">
+        <h1 className="font-bold dark:text-red-600">Error</h1>
+        <p>{error.message}</p>
+        <p onClick={backHandler}>Please back to the previous page</p>
+      </div>
+    );
+  } else {
+    return <h1>Unknown Error</h1>;
+  }
 }

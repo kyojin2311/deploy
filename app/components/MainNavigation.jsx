@@ -59,6 +59,15 @@ export default function MainNavigation() {
               </Link>
             </li>
             <li>
+              <Link
+                to="/car"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                <FontAwesomeIcon icon={faCar} size="lg" />
+                <span className="flex-1 ml-3 whitespace-nowrap">Cars</span>
+              </Link>
+            </li>
+            <li>
               <button
                 type="button"
                 className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
@@ -91,19 +100,6 @@ export default function MainNavigation() {
                 id="dropdown-example"
                 className={`py-2 space-y-2 ${toggle ? "" : "hidden"}`}
               >
-                {/* {isAdmin === 1 && (
-                  <li>
-                    <a
-                      href="#"
-                      className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                    >
-                      <FontAwesomeIcon icon={faUser} size="lg" />
-                      <span className="flex-1 ml-3 whitespace-nowrap">
-                        Staff
-                      </span>
-                    </a>
-                  </li>
-                )} */}
                 {isAdmin === 1 && (
                   <li>
                     <Link
@@ -146,7 +142,7 @@ export default function MainNavigation() {
             {isAdmin === 1 && (
               <li>
                 <Link
-                  to="/addStaff"
+                  to="/office/add"
                   className="flex items-center self-end p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   <FontAwesomeIcon icon={faBuilding} size="lg" />
