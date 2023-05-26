@@ -1,17 +1,17 @@
 import Login from "../components/Login";
 import { login } from "../services/APIAction.server";
-import { getUserFromSession } from "../services/auth.server";
+import { requireUserSession } from "../services/auth.server";
 import { redirect, json } from "@remix-run/node";
 export default function LoginPage() {
   return <Login />;
 }
-export async function loader({ request }) {
-  const token = await getUserFromSession(request);
-  if (token) {
-    return redirect("/main");
-  }
-  return null;
-}
+// export async function loader({ request }) {
+//   const token = await requireUserSession(request);
+//   if (!token) {
+//     return null;
+//   }
+//   return redirect("/");
+// }
 export async function action({ request }) {
   const formData = await request.formData();
   const data = {

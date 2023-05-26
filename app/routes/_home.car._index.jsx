@@ -3,11 +3,13 @@ import SearchModal from "../components/searchCarModal.client";
 import { requireUserSession } from "../services/auth.server";
 import { findCarbyNumberPlate } from "../services/APIAction.server";
 import CarPageDefault from "../components/CarPageDefault";
-export default function () {
+import { ClientOnly } from "remix-utils";
+import Spinner from "../util/Loading";
+export default function CarIndex() {
   return (
     <>
       <CarPageDefault />
-      <SearchModal />
+      <ClientOnly fallback={<Spinner />}>{() => <SearchModal />}</ClientOnly>
     </>
   );
 }

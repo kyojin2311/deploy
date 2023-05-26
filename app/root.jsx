@@ -14,26 +14,26 @@ import {
 
 import { useRouteError, isRouteErrorResponse } from "@remix-run/react";
 import Spinner from "./util/Loading";
-export const links = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-  { rel: "stylesheet", href: styles },
-  {
-    rel: "stylesheet",
-    href: "https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css",
-  },
-];
-// export function links() {
-//   return [
-//     {
-//       rel: "stylesheet",
-//       href: styles,
-//     },
-//     {
-//       rel: "stylesheet",
-//       href: "https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css",
-//     },
-//   ];
-// }
+// export const links = () => [
+//   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+//   { rel: "stylesheet", href: styles },
+//   {
+//     rel: "stylesheet",
+//     href: "https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css",
+//   },
+// ];
+export function links() {
+  return [
+    {
+      rel: "stylesheet",
+      href: styles,
+    },
+    {
+      rel: "stylesheet",
+      href: "https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css",
+    },
+  ];
+}
 export function meta() {
   return [{ title: "Vietnam Registry" }];
 }
@@ -55,6 +55,7 @@ export default function App() {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"
         />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
         <Meta />
         <Links />
       </head>
@@ -64,7 +65,7 @@ export default function App() {
         <Scripts />
         <LiveReload />
         {spinner}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+        {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script> */}
         {/* <script
           defer
           src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
