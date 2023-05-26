@@ -1,11 +1,13 @@
 import { getOwnInfo } from "../services/APIAction.server";
 import link from "../images/light.jpg";
-import { ClientOnly } from "remix-utils";
 import ChartCom from "../components/Chart.client";
 import { requireUserSession } from "../services/auth.server";
 import { redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import Spinner from "../util/Loading";
+import { Suspense } from "react";
+import { ClientOnly } from "remix-utils";
+import styles from "../styles/tailwind.css";
 export const meta = () => {
   return [{ title: "VietNam Registry" }];
 };
@@ -56,10 +58,6 @@ export default function MainPage() {
     ],
   };
 
-  const Fallback = () => {
-    return <Spinner />;
-  };
-
   return (
     <div className="px-4 pt-6">
       <div className="grid gap-4 xl:grid-cols-2 2xl:grid-cols-3">
@@ -73,15 +71,18 @@ export default function MainPage() {
             </div>
           </div>
           <div className="main-chart" style={{ minHeight: "435px" }}>
-            <div>
-              {typeof window !== "undefined" ? (
-                <ChartCom
-                  data={data}
-                />
-              ) : (
-                <Fallback />
-              )}
-            </div>
+            {/* <ClientOnly>
+              <div>
+                {typeof window !== "undefined" ? (
+                  <ChartCom data={data} />
+                ) : (
+                  <Fallback />
+                )}
+              </div>
+            </ClientOnly> */}
+            <ClientOnly fallback={<Spinner />}>
+             {() => <ChartCom data={data} />}
+            </ClientOnly>
           </div>
         </div>
         <div className="p-4 bg-white border dark:bg-gray-800 sm:p-6 dark:border-gray-700  shadow-sm rounded-lg border-gray-200">
@@ -116,4 +117,12 @@ export async function loader({ request }) {
   const resData = await response.json();
   console.log(resData);
   return resData;
+}
+export function links() {
+  return [
+    {
+      rel: "stylesheet",
+      href: styles,
+    },
+  ];
 }

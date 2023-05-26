@@ -1,5 +1,5 @@
 import { redirect, json } from "@remix-run/node";
-import SearchModal from "../components/searchCarModal";
+import SearchModal from "../components/searchCarModal.client";
 import { requireUserSession } from "../services/auth.server";
 import { findCarbyNumberPlate } from "../services/APIAction.server";
 import CarPageDefault from "../components/CarPageDefault";

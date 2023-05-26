@@ -1,5 +1,4 @@
 import Login from "../components/Login";
-import styles from "../styles/LoginBox.css";
 import { login } from "../services/APIAction.server";
 import { getUserFromSession } from "../services/auth.server";
 import { redirect, json } from "@remix-run/node";
@@ -20,18 +19,9 @@ export async function action({ request }) {
     password: formData.get("password"),
   };
   try {
-  const response = await login(data.email, data.password);
-  return response;
+    const response = await login(data.email, data.password);
+    return response;
   } catch (error) {
-    return json({message:error.message});
-   }
-}
-
-export function links() {
-  return [
-    {
-      rel: "stylesheet",
-      href: styles,
-    },
-  ];
+    return json({ message: error.message });
+  }
 }
