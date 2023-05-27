@@ -8,12 +8,14 @@ import Spinner from "../util/Loading";
 import { Suspense } from "react";
 import { ClientOnly } from "remix-utils";
 import styles from "../styles/tailwind.css";
+import Chart2 from "../components/ChartFromChartjs";
 export const meta = () => {
   return [{ title: "VietNam Registry" }];
 };
 
 export default function MainPage() {
   const loaderdata = useLoaderData();
+
   const data = {
     options: {
       chart: {
@@ -79,10 +81,12 @@ export default function MainPage() {
                   <Fallback />
                 )}
               </div>
-            </ClientOnly> */}
+            </ClientOnly>{" "}
+            */}
             <ClientOnly fallback={<Spinner />}>
-             {() => <ChartCom data={data} />}
+              {() => <ChartCom data={data} />}
             </ClientOnly>
+            {/* <Chart2 data={loaderdata.data} /> */}
           </div>
         </div>
         <div className="p-4 bg-white border dark:bg-gray-800 sm:p-6 dark:border-gray-700  shadow-sm rounded-lg border-gray-200">

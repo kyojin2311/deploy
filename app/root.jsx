@@ -11,33 +11,19 @@ import {
   useLoaderData,
   useNavigate,
 } from "@remix-run/react";
-
 import { useRouteError, isRouteErrorResponse } from "@remix-run/react";
 import Spinner from "./util/Loading";
-// export const links = () => [
-//   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-//   { rel: "stylesheet", href: styles },
-//   {
-//     rel: "stylesheet",
-//     href: "https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css",
-//   },
-// ];
 export function links() {
   return [
     {
       rel: "stylesheet",
       href: styles,
     },
-    {
-      rel: "stylesheet",
-      href: "https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css",
-    },
   ];
 }
 export function meta() {
   return [{ title: "Vietnam Registry" }];
 }
-
 export default function App() {
   let states = useGlobalTransitionStates();
   let spinner = "";
@@ -47,31 +33,19 @@ export default function App() {
     );
   }
   return (
-    <html lang="en">
+    <html lang="en" style={{ overflow: "auto" }}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"
-        />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
         <Meta />
         <Links />
       </head>
       <body className="dark">
-        <Outlet />
+        <Outlet scrollBehavior="smooth" />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
         {spinner}
-        {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script> */}
-        {/* <script
-          defer
-          src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
-          integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
-          crossOrigin="anonymous"
-        ></script> */}
       </body>
     </html>
   );

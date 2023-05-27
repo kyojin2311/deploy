@@ -5,11 +5,12 @@ import { findCarbyNumberPlate } from "../services/APIAction.server";
 import CarPageDefault from "../components/CarPageDefault";
 import { ClientOnly } from "remix-utils";
 import Spinner from "../util/Loading";
+import { Outlet } from "@remix-run/react";
 export default function CarIndex() {
   return (
     <>
-      <CarPageDefault />
       <ClientOnly fallback={<Spinner />}>{() => <SearchModal />}</ClientOnly>
+      <CarPageDefault />
     </>
   );
 }

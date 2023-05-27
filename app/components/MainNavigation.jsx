@@ -26,11 +26,7 @@ export default function MainNavigation() {
         aria-label="Sidebar"
       >
         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-          <Link
-            to="/info"
-            className="flex items-center pl-2.5 mb-5"
-            prefetch="intent"
-          >
+          <Link to="/info" className="flex items-center pl-2.5 mb-5">
             <img
               src="https://flowbite.com/docs/images/logo.svg"
               className="h-6 mr-3 sm:h-7"
@@ -155,18 +151,6 @@ export default function MainNavigation() {
                 </Link>
               </li>
             )}
-            {/* <li>
-              <Link
-                to="/Inspections/add"
-                className="flex items-center self-end p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <FontAwesomeIcon icon={faFileLines} size="lg" />
-                <span className="flex-1 ml-3 whitespace-nowrap">
-                  {" "}
-                  Create Inspections
-                </span>
-              </Link>
-            </li> */}
             <li>
               <Link
                 to="/logout"
