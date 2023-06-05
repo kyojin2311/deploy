@@ -1,14 +1,14 @@
 import { createCookieSessionStorage, redirect } from "@remix-run/node";
-// const SESSION_SECRET = "S3CRET";
 import { json } from "@remix-run/node";
 
+const SESSION_SECRET = process.env.SESSION_SECRET;
 const sessionStorage = createCookieSessionStorage({
   cookie: {
     name: "session",
     path: "/",
     secure: process.env.NODE_ENV === "production",
-    secrets: ["S3SR$T"],
-    sameSite: "lax",
+    secrets: [SESSION_SECRET],
+    sameSite: "strict",
     maxAge: 30 * 24 * 60,
     httpOnly: true,
   },

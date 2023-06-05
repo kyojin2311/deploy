@@ -1,6 +1,5 @@
-import { Link } from "@remix-run/react";
-import OfficeList from "../components/OfficeList";
-import { getAllOffice } from "../services/APIAction.server";
+import OfficeList from "../components/Office/OfficeList";
+import { adminCheck, getAllOffice } from "../services/APIAction.server";
 export default function OfficePage() {
   return (
     <>
@@ -10,5 +9,10 @@ export default function OfficePage() {
 }
 
 export async function loader({ request }) {
-  return await getAllOffice(request);
+  try {
+    const data = await adminCheck(request);
+    return await getAllOffice(request);
+  } catch (error) {
+    throw new Error(`${error.message}`);
+  }
 }
