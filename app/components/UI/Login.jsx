@@ -1,4 +1,5 @@
-import { Form, useActionData } from "@remix-run/react";
+import { Form, Link, useActionData } from "@remix-run/react";
+import logo from "../../images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import { Alert } from "flowbite-react";
@@ -6,18 +7,13 @@ export default function Login() {
   const data = useActionData();
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <a
-          href="#"
-          className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
+      <div className="flex flex-col items-center justify-center px-6 mx-auto md:h-screen lg:py-0">
+        <Link
+          to="#"
+          className="flex items-center text-2xl font-semibold text-gray-900 dark:text-white justify-center mb-6"
         >
-          <img
-            className="w-8 h-8 mr-2"
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-            alt="logo"
-          />
-          Flowbite
-        </a>
+          <img className="w-1/3" src={logo} alt="logo" />
+        </Link>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight text-center tracking-tight text-gray-900 md:text-2xl dark:text-white">
@@ -76,14 +72,14 @@ export default function Login() {
               <button className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                 Sign in
               </button>
-              {/* <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                <a
-                  href="#"
+              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                <Link
+                  to="/forgot-pass"
                   className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                 >
                   Forgot Password
-                </a>
-              </p> */}
+                </Link>
+              </p>
             </Form>
           </div>
         </div>
